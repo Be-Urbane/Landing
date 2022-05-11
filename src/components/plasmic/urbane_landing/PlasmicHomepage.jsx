@@ -84,7 +84,7 @@ function PlasmicHomepage__RenderFunc(props) {
                       sty.text___7S52W
                     )}
                   >
-                    {"Invite only dinners for ambitious doers"}
+                    {"Invite-only dinners for ambitious doers"}
                   </div>
                 </div>
               </div>
