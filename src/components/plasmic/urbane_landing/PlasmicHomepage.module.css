@@ -5,15 +5,10 @@
   position: relative;
   flex-direction: column;
   align-items: center;
-  background: #101010;
+  background: #191919;
   min-width: 0;
   min-height: 0;
   padding: 1px;
-}
-@media (min-width: 0px) and (max-width: 800px) {
-  .root {
-    padding: 64px 20px;
-  }
 }
 .freeBox___0QrsA {
   display: flex;
@@ -23,9 +18,14 @@
   justify-content: space-between;
   width: 100%;
   height: 100%;
-  max-width: 980px;
+  flex-grow: 1;
   min-width: 0;
   min-height: 0;
+}
+@media (min-width: 0px) and (max-width: 800px) {
+  .freeBox___0QrsA {
+    flex-shrink: 1;
+  }
 }
 .freeBox__m92Gp {
   display: flex;
@@ -101,27 +101,30 @@
   display: flex;
   position: relative;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center;
   justify-content: flex-start;
   width: 464px;
   align-self: center;
 }
 @media (min-width: 0px) and (max-width: 800px) {
   .freeBox___0S9Jy {
-    width: 322px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
   }
 }
 .text__cwfaq {
-  font-size: 90px;
+  font-size: 92px;
   font-weight: 700;
-  color: #363636;
+  color: #ffffff;
   font-family: "Voyage";
   align-self: center;
 }
 @media (min-width: 0px) and (max-width: 800px) {
   .text__cwfaq {
     text-align: center;
-    font-size: 42px;
+    font-size: 58px;
   }
 }
 @media (min-width: 0px) and (max-width: 400px) {
@@ -131,19 +134,43 @@
 }
 .text___7S52W {
   position: relative;
-  font-size: 22px;
+  font-size: 18px;
   align-self: center;
-  color: #36363680;
-  font-weight: 700;
+  color: #d19c37;
+  font-weight: 500;
+  font-family: "Open Sans", sans-serif;
+  margin-top: 15px;
 }
 @media (min-width: 0px) and (max-width: 800px) {
   .text___7S52W {
     text-align: center;
-    font-size: 18px;
-    max-width: 228px;
+    font-size: 14px;
     width: 100%;
     min-width: 0;
   }
+}
+.freeBox__jujT2 {
+  display: flex;
+  position: absolute;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  align-self: baseline;
+  left: 0px;
+  top: auto;
+  bottom: 6%;
+  min-width: 0;
+  padding: 8px;
+}
+.text__qRqDo {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 800px;
+  color: #5c5c5c;
 }
 .freeBox__vEbH8 {
   display: flex;

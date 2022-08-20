@@ -11,6 +11,7 @@
 import * as React from "react"
 import { Link } from "gatsby"
 import * as p from "@plasmicapp/react-web"
+import * as ph from "@plasmicapp/host"
 import {
   classNames,
   createPlasmicElementProxy,
@@ -25,8 +26,10 @@ export const PlasmicCopyableLink__VariantProps = new Array()
 export const PlasmicCopyableLink__ArgProps = new Array("children")
 
 function PlasmicCopyableLink__RenderFunc(props) {
-  const { variants, args, overrides, forNode } = props
-  const $props = props.args
+  const { variants, overrides, forNode } = props
+  const $ctx = ph.useDataEnv?.() || {}
+  const args = React.useMemo(() => Object.assign({}, props.args), [props.args])
+  const $props = args
   return (
     <p.Stack
       as={"div"}
@@ -110,12 +113,17 @@ const PlasmicDescendants = {
 
 function makeNodeComponent(nodeName) {
   const func = function (props) {
-    const { variants, args, overrides } = deriveRenderOpts(props, {
-      name: nodeName,
-      descendantNames: [...PlasmicDescendants[nodeName]],
-      internalArgPropNames: PlasmicCopyableLink__ArgProps,
-      internalVariantPropNames: PlasmicCopyableLink__VariantProps,
-    })
+    const { variants, args, overrides } = React.useMemo(
+      () =>
+        deriveRenderOpts(props, {
+          name: nodeName,
+          descendantNames: [...PlasmicDescendants[nodeName]],
+          internalArgPropNames: PlasmicCopyableLink__ArgProps,
+          internalVariantPropNames: PlasmicCopyableLink__VariantProps,
+        }),
+
+      [props, nodeName]
+    )
 
     return PlasmicCopyableLink__RenderFunc({
       variants,

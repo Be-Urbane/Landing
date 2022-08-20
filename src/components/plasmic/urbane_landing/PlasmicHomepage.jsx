@@ -10,6 +10,7 @@
 // Component: 8uoN1T4KzVYoM
 import * as React from "react"
 import * as p from "@plasmicapp/react-web"
+import * as ph from "@plasmicapp/host"
 import {
   classNames,
   createPlasmicElementProxy,
@@ -25,9 +26,15 @@ export const PlasmicHomepage__VariantProps = new Array()
 
 export const PlasmicHomepage__ArgProps = new Array()
 
+export function Head() {
+  return <></>
+}
+
 function PlasmicHomepage__RenderFunc(props) {
-  const { variants, args, overrides, forNode } = props
-  const $props = props.args
+  const { variants, overrides, forNode } = props
+  const $ctx = ph.useDataEnv?.() || {}
+  const args = React.useMemo(() => Object.assign({}, props.args), [props.args])
+  const $props = args
   const globalVariants = ensureGlobalVariants({
     screen: useScreenVariantsfEdNgTvqmIKpV(),
   })
@@ -90,6 +97,18 @@ function PlasmicHomepage__RenderFunc(props) {
               </div>
             </p.Stack>
 
+            <div className={classNames(projectcss.all, sty.freeBox__jujT2)}>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__qRqDo
+                )}
+              >
+                {"San Francisco | New York | Los Angeles"}
+              </div>
+            </div>
+
             <div className={classNames(projectcss.all, sty.freeBox__vEbH8)} />
           </div>
         </div>
@@ -104,12 +123,17 @@ const PlasmicDescendants = {
 
 function makeNodeComponent(nodeName) {
   const func = function (props) {
-    const { variants, args, overrides } = deriveRenderOpts(props, {
-      name: nodeName,
-      descendantNames: [...PlasmicDescendants[nodeName]],
-      internalArgPropNames: PlasmicHomepage__ArgProps,
-      internalVariantPropNames: PlasmicHomepage__VariantProps,
-    })
+    const { variants, args, overrides } = React.useMemo(
+      () =>
+        deriveRenderOpts(props, {
+          name: nodeName,
+          descendantNames: [...PlasmicDescendants[nodeName]],
+          internalArgPropNames: PlasmicHomepage__ArgProps,
+          internalVariantPropNames: PlasmicHomepage__VariantProps,
+        }),
+
+      [props, nodeName]
+    )
 
     return PlasmicHomepage__RenderFunc({
       variants,
