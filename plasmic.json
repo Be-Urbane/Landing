@@ -75,7 +75,13 @@
       "images": [],
       "indirect": false,
       "globalContextsFilePath": "",
-      "codeComponents": []
+      "codeComponents": [
+        {
+          "id": "2s6XqROKuZ",
+          "name": "PlasmicHead",
+          "componentImportPath": "@plasmicapp/react-web"
+        }
+      ]
     }
   ],
   "globalVariants": {
